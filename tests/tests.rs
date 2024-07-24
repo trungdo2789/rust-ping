@@ -15,7 +15,7 @@ fn basic() {
         Some(166),
         Some(3),
         Some(5),
-        Some(&random()),
+        Some(&vec![0; 24]),
     )
     .unwrap();
 }
@@ -30,7 +30,7 @@ fn basic_v6() {
         Some(166),
         Some(3),
         Some(5),
-        Some(&random()),
+        Some(&vec![0; 24]),
     )
     .unwrap();
 }
@@ -45,7 +45,7 @@ fn basic_dgram() {
         Some(166),
         Some(3),
         Some(5),
-        Some(&random()),
+        Some(&vec![0; 24]),
     )
     .unwrap();
 }
@@ -60,7 +60,7 @@ fn basic_dgram_v6() {
         Some(166),
         Some(3),
         Some(5),
-        Some(&random()),
+        Some(&vec![0; 24]),
     )
     .unwrap();
 }
