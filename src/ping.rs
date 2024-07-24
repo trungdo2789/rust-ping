@@ -1,6 +1,6 @@
 use std::io::Read;
 use std::net::{IpAddr, SocketAddr};
-use std::time::{Duration,SystemTime};
+use std::time::{Duration, SystemTime};
 
 use rand::random;
 use socket2::{Domain, Protocol, Socket, Type};
@@ -10,7 +10,7 @@ use crate::packet::{EchoReply, EchoRequest, IcmpV4, IcmpV6, IpV4Packet, ICMP_HEA
 
 const TOKEN_SIZE: usize = 24;
 const ECHO_REQUEST_BUFFER_SIZE: usize = ICMP_HEADER_SIZE + TOKEN_SIZE;
-type Token = [u8; TOKEN_SIZE];
+type Token = Vec<u8>;
 
 fn ping_with_socktype(
     socket_type: Type,
@@ -31,7 +31,7 @@ fn ping_with_socktype(
     let dest = SocketAddr::new(addr, 0);
     let mut buffer = [0; ECHO_REQUEST_BUFFER_SIZE];
 
-    let default_payload: &Token = &random();
+    let default_payload: &Token = &vec![0; TOKEN_SIZE];
 
     let request = EchoRequest {
         ident: ident.unwrap_or(random()),
